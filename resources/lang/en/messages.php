@@ -7,6 +7,8 @@ return [
     'validation_errors' => 'Validation errors',
     'login_success' => 'User logged in successfully',
     'already_login' => 'You are already logged in!',
-    'products_list' => 'Products list'
+    'products_list' => 'Products list',
+    'product_updated' => 'Product has been updated successfully',
+    'product_deleted' => 'Product has been deleted successfully'
 
 ];

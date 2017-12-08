@@ -23,4 +23,12 @@ class BaseApiController extends Controller
         $result = ['status' => 0, 'message'=>$message, 'errors'=>$errors, 'data'=>$data];
         return ReturnResponse::json($result, $statusCode)->header('Content-Type', "application/json");
     }
+
+    public function returnResponse($result){
+        if ($result['status']==1){
+            return BaseApiController::successResponse($result['data'],$result['message']);
+        }else{
+            return BaseApiController::errorResponse($result['data'],$result['message']);
+        }
+    }
 }

@@ -31,4 +31,41 @@ class ProductServiceProvider extends BaseServiceProvider {
     }
 
 
+    /**
+     * update product
+     * @return type
+     */
+    public function updateProduct($request) {
+        try {
+            $isProductUpdated = Product::where('id',$request->productId)->update(['productName'=>$request->productName]);
+            if($isProductUpdated){
+                UserServiceProvider::$data['status'] = 1;
+                UserServiceProvider::$data['message'] = trans('messages.product_updated');
+            }
+
+        } catch (\Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return UserServiceProvider::$data;
+    }
+
+    /**
+     * delete product
+     * @return type
+     */
+    public function deleteProduct($request){
+        try {
+            $isProductUpdated = Product::where('id',$request->productId)->delete();
+            if($isProductUpdated){
+                UserServiceProvider::$data['status'] = 1;
+                UserServiceProvider::$data['message'] = trans('messages.product_deleted');
+            }
+
+        } catch (\Exception $e) {
+            $this->logError(__CLASS__,__METHOD__,$e->getMessage());
+        }
+        return UserServiceProvider::$data;
+    }
+
+
 }

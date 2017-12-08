@@ -8,3 +8,5 @@ This code covers following functionality:
 - Laravel API routing
 - Restful API like (Register, Login, Logout)
 - Products list api with user authentication
+- Update product api
+- Delete product api

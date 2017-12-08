@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class RegisterRequest extends BaseApiRequest   {
+class RegisterUserRequest extends BaseApiRequest   {
 
     /**
      * Get the validation rules that apply to the request.
