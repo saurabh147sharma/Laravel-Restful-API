@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AccessToken;
 use Closure;
 use App\Http\Controllers\BaseApiController;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiSecureKeyAuth
+class UserAuth
 {
     /**
      * Handle an incoming request.
@@ -18,8 +19,14 @@ class ApiSecureKeyAuth
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(empty($request->header('apiKey')) || $request->header('apiKey')!=env('API_KEY')){
+        if(empty($request->header('accessToken'))){
             return BaseApiController::errorResponse([],'Unauthorized',[],Response::HTTP_UNAUTHORIZED);
+        }
+        else if(!empty($request->header('accessToken'))){
+           $isAuthorized =  AccessToken::select('id')->where('accessToken',$request->header('accessToken'))->first();
+            if(empty($isAuthorized)) {
+                return BaseApiController::errorResponse([],'Unauthorized',[],Response::HTTP_UNAUTHORIZED);
+            }
         }
         return $next($request);
     }

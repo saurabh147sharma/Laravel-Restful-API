@@ -16,4 +16,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'apiKeyAuth'], function () {
     Route::post('/user/create', 'V1\User\UserController@create');
     Route::post('/user/login', 'V1\User\UserController@login');
+    Route::group(['middleware' => 'userAuth'], function () {
+        Route::get('/product/get', 'V1\Product\ProductController@get');
+    });
 });

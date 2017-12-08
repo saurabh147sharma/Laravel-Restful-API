@@ -7,3 +7,4 @@ This code covers following functionality:
 - Authentication Middleware.
 - Laravel API routing
 - Restful API like (Register, Login, Logout)
+- Products list api with user authentication
