@@ -10,3 +10,9 @@ This code covers following functionality:
 - Products list api with user authentication
 - Update product api
 - Delete product api
+
+## Installation 
+
+- Clone the code
+- composer install
+- Write permissions to storage and bootstrap/cache folder
